@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const userTableBody = document.querySelector('#userTableBody');
-
   const registeredUsers = [];
+
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     if (key.startsWith('user_')) {
@@ -42,23 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function addRowToTable(tableBody, userData) {
   const newRow = tableBody.insertRow();
 
-  const nameCell = newRow.insertCell();
-  nameCell.textContent = userData.name;
-  nameCell.classList.add('border', 'border-gray-300', 'p-1');
-
-  const emailCell = newRow.insertCell();
-  emailCell.textContent = userData.email;
-  emailCell.classList.add('border', 'border-gray-300', 'p-2');
-
-  const passwordCell = newRow.insertCell();
-  passwordCell.textContent = userData.password;
-  passwordCell.classList.add('border', 'border-gray-300', 'p-2');
-
-  const dobCell = newRow.insertCell();
-  dobCell.textContent = userData.dob;
-  dobCell.classList.add('border', 'border-gray-300', 'p-2');
-
-  const acceptedTermsCell = newRow.insertCell();
-  acceptedTermsCell.textContent = userData.acceptedTerms;
-  acceptedTermsCell.classList.add('border', 'border-gray-300', 'p-2');
+  const cellLabels = ['Name', 'Email', 'Password', 'DOB', 'Accepted Terms'];
+  
+  for (let i = 0; i < cellLabels.length; i++) {
+    const cell = newRow.insertCell();
+    cell.textContent = i === 3 ? userData[cellLabels[i].toLowerCase()] : userData[cellLabels[i].toLowerCase()];
+    cell.classList.add('compact-cell');
+  }
 }
