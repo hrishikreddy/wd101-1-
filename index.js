@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentYear = new Date().getFullYear();
     const age = currentYear - dob.getFullYear();
 
-    // Validate age to accept users between 18 and 55 years old
     if (age < 18 || age > 55) {
       alert('Age should be between 18 and 55.');
       return;
@@ -45,7 +44,7 @@ function addRowToTable(tableBody, userData) {
 
   const nameCell = newRow.insertCell();
   nameCell.textContent = userData.name;
-  nameCell.classList.add('border', 'border-gray-300', 'p-2');
+  nameCell.classList.add('border', 'border-gray-300', 'p-1');
 
   const emailCell = newRow.insertCell();
   emailCell.textContent = userData.email;
